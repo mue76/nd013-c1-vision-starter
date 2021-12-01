@@ -235,17 +235,14 @@ I used a training set - 75%, a validation set - 15%, a test set - 10% of 100 tfr
 #### Reference experiment
 The Single Shot Detector (SSD Resnet 50 640x640) without augmentation , model loss is shown below: 
 
-Loss/classification_loss
-![loss1](./images/Loss_classification_loss.svg)
+Precision
+![prec](./images/prec.png)
 
-Loss/localization_loss
-![loss2](./images/Loss_localization_loss.svg)
+Recall
+![rec](./images/rec.png)
 
 Loss/regularization_loss
-![loss3](./images/Loss_regularization_loss.svg)
-
-Loss/total_loss
-![loss4](./images/Loss_total_loss.svg)
+![loss](./images/loss.png)
 
 
 Loss is gradually decreased. But it is not great.
@@ -289,7 +286,6 @@ Gray scaled
 
 
 Precision with augmentations
-Loss/classification_loss
 ![aug_prec](./images/aug_prec.png)
 
 Recall with augmentations
