@@ -1,5 +1,8 @@
 # Object Detection in an Urban Environment
 
+This is a detailed repository of Computer Vision Module for Udacity Self Driving Car ND.
+In this project, I will apply the skills to create a convolutional neural network to detect and classify objects using data from Waymo.
+
 ## Data
 
 For this project, we will be using data from the [Waymo Open dataset](https://waymo.com/open/).
@@ -12,30 +15,27 @@ For this project, we will be using data from the [Waymo Open dataset](https://wa
 
 The data you will use for training, validation and testing is organized as follow:
 ```
-/home/workspace/data/waymo
-    - training_and_validation - contains 97 files to train and validate your models
-    - train: contain the train data (empty to start)
-    - val: contain the val data (empty to start)
-    - test - contains 3 files to test your model and create inference videos
+./data/waymo
+    - train: contain the train data 
+    - valid: contain the val data
+    - test - contain the test data
 ```
-
-The `training_and_validation` folder contains file that have been downsampled: we have selected one every 10 frames from 10 fps videos. The `testing` folder contains frames from the 10 fps video without downsampling.
-
-You will split this `training_and_validation` data into `train`, and `val` sets by completing and executing the `create_splits.py` file.
+In the Colab environment, download_process.py was used to have the above data configuration, and the code was filled in create_split.py. Pleare refer to the (in_Colab)_from_download_dataset_until_object_detection.ipynb
 
 ### Experiments
 The experiments folder will be organized as follow:
 ```
 experiments/
-    - pretrained_model/
+    - pretrained_model/ - contains the checkpoints of the pretrained models. ( SSD Resnet 50 640x640)
     - exporter_main_v2.py - to create an inference model
     - model_main_tf2.py - to launch training
-    - reference/ - reference training with the unchanged config file
-    - experiment0/ - create a new folder for each experiment you run
-    - experiment1/ - create a new folder for each experiment you run
-    - experiment2/ - create a new folder for each experiment you run
-    - label_map.pbtxt
-    ...
+
+    - experiment0/ - first experiment based on pipeline.config, which is for a SSD Resnet 50 640x640 model
+                     batch_size = 2
+    
+    - experiment1/ - improved experiment with pipeline.config, which is for a SSD Resnet 50 640x640 model
+                    batch_size = 4 and data augmentation is applied
+
 ```
 
 ## Prerequisites
@@ -59,6 +59,9 @@ python download_process.py --data_dir {processed_file_location} --size {number o
 
 You are downloading 100 files (unless you changed the `size` parameter) so be patient! Once the script is done, you can look inside your `data_dir` folder to see if the files have been downloaded and processed correctly.
 
+**Note:** There was additional work to be done to work in the colab environment. 
+See (in_Colab)_from_download_dataset_until_object_detection.ipynb for details.
+
 ### Classroom Workspace
 
 In the classroom workspace, every library and package should already be installed in your environment. You will NOT need to make use of `gcloud` to download the images.
@@ -71,6 +74,8 @@ You should use the data already present in `/home/workspace/data/waymo` director
 
 Keep in mind that you should refer to this analysis to create the different spits (training, testing and validation).
 
+**Note** 
+For images, charts and other visualizations, please refer to Exploratory Data Analysis.ipynb
 
 ### Create the training - validation splits
 In the class, we talked about cross-validation and the importance of creating meaningful training and validation splits. For this project, you will have to create your own training and validation sets using the files located in `/home/workspace/data/waymo`. The `split` function in the `create_splits.py` file does the following:
@@ -81,6 +86,11 @@ Use the following command to run the script once your function is implemented:
 ```
 python create_splits.py --data-dir /home/workspace/data
 ```
+
+**Note** 
+To create the different splits: training, validation and testing, I implemeted split_data function in the create_splits.py
+Cross validation is a set of techniques to evaluate the capacity of our model to generalize and alleviate the overfitting challenges. I splitted as follows
+a training set - 75%, a validation set - 15%, a test set - 10%
 
 ### Edit the config file
 
@@ -110,7 +120,8 @@ python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeli
 **Note**: Both processes will display some Tensorflow warnings, which can be ignored. You may have to kill the evaluation script manually using
 `CTRL+C`.
 
-To monitor the training, you can launch a tensorboard instance by running `python -m tensorboard.main --logdir experiments/reference/`. You will report your findings in the writeup.
+To monitor the training, you can launch a tensorboard instance by running `python -m tensorboard.main --logdir experiments/experiment0/`. You will report your findings in the writeup.
+
 
 ### Improve the performances
 
@@ -141,16 +152,38 @@ python inference_video.py --labelmap_path label_map.pbtxt --model_path experimen
 ## Submission Template
 
 ### Project overview
-This section should contain a brief description of the project and what we are trying to achieve. Why is object detection such an important component of self driving car systems?
+This is a detailed repository of Computer Vision Module for Udacity Self Driving Car ND.
+In this project, I will apply the skills to create a convolutional neural network to detect and classify objects using data from Waymo.
 
 ### Set up
-This section should contain a brief description of the steps to follow to run the code for this repository.
+Install Tensorflow Object Detection API
+- https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html#tensorflow-object-detection-api-installation
+
+Git Clone of Udacity Project Starter
+- https://github.com/udacity/nd013-c1-vision-starter.git
+
+Install Waymo Open Data Set
+- https://colab.research.google.com/github/waymo-research/waymo-open-dataset/blob/master/tutorial/tutorial.ipynb#scrollTo=sLIUOJzSyjj6
+
+Download and Process (waymo dataset)
+- python download_process.py --data_dir ./data
+
+Reinstall cuda and cudnn in Google Colab
+- for cuda :  https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+- for cudnn : https://developer.nvidia.com/compute/machine-learning/cudnn/secure/8.1.0.77/11.2_20210127/Ubuntu18_04-x64/libcudnn8_8.1.0.77-1+cuda11.2_amd64.deb
+
+**Note**
+Pleare refer to the (in_Colab)_from_download_dataset_until_object_detection.ipynb
 
 ### Dataset
 #### Dataset analysis
 This section should contain a quantitative and qualitative description of the dataset. It should include images, charts and other visualizations.
+![eda1](./images/eda1.png)
+
 #### Cross validation
-This section should detail the cross validation strategy and justify your approach.
+To create the different splits: training, validation and testing, I implemeted split_data function in the create_splits.py
+Cross validation is a set of techniques to evaluate the capacity of our model to generalize and alleviate the overfitting challenges. I splitted as follows
+a training set - 75%, a validation set - 15%, a test set - 10%
 
 ### Training
 #### Reference experiment
