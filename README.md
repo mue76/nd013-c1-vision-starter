@@ -156,6 +156,8 @@ This is a detailed repository of Computer Vision Module for Udacity Self Driving
 In this project, I will apply the skills to create a convolutional neural network to detect and classify objects using data from Waymo.
 
 ### Set up
+I have used Tesla P100 in Google Colaboratory
+
 Install Tensorflow Object Detection API
 - https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html#tensorflow-object-detection-api-installation
 
@@ -200,32 +202,43 @@ Images are taken in different environments(subway/highway/city) with different w
 ![eda10](./images/eda10.png)
 
 #### Dataset analysis
-Further analysis of the dataset shows that most images contain vehicles and pedestrians (majority vehicles), and very few sample images have cyclists in them. The chart below shows a bar plot for the distribution of classes (cars, pedestrians, and cyclists), over a collection of 20000 random images in the dataset. 
+
 ![chart1](./images/chart1.png)
 
-*Distribution of Cars
+Further analysis of the dataset shows that most images contain vehicles and pedestrians (majority vehicles), and very few sample images have cyclists in them. The chart below shows a bar plot for the distribution of classes (cars, pedestrians, and cyclists), over a collection of 20000 random images in the dataset. 
+
+
+*Distribution of Cars*
 ![chart2](./images/chart2.png)
 The highest point is when the number of vehicles per image is 1~2, and it gradually decreases, so it is rarely more than 60.
 
 
-*Distribution of Pedestrians
+*Distribution of Pedestrians*
 ![chart3](./images/chart3.png)
 The highest point is when the number of pedestrians per image is 1~2, and the number of pedestrians per image is the highest, and it is rarely more than 40.
 
 
-*Distribution of Cyclits
+*Distribution of Cyclits*
 ![chart4](./images/chart4.png)
 The cyclist is also often included in the image with about 1 person, and it is slightly distributed among 2-6 people.
 
 
 #### Cross validation
 To create the different splits: training, validation and testing, I implemeted split_data function in the create_splits.py
-Cross validation is a set of techniques to evaluate the capacity of our model to generalize and alleviate the overfitting challenges. I splitted as follows
-a training set - 75%, a validation set - 15%, a test set - 10%
+Cross validation is a set of techniques to evaluate the capacity of our model to generalize and alleviate the overfitting challenges. First I shuffled the data randomly and then splitted into training,testing and validation sets.
+I used a training set - 75%, a validation set - 15%, a test set - 10% of 100 tfrecord samples.
 
 ### Training
 #### Reference experiment
 This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+
+![loss1](./images/Loss_classification_loss.svg)
+
+![loss2](./images/Loss_localization_loss.svg)
+
+![loss3](./images/Loss_regularization_loss.svg)
+
+![loss4](./Loss_total_loss.svg)
 
 #### Improve on the reference
 This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
