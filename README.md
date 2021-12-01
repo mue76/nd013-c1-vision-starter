@@ -247,13 +247,19 @@ Loss/regularization_loss
 Loss/total_loss
 ![loss4](./images/Loss_total_loss.svg)
 
+Precision
+![precision](./images/DetectionBoxes_Precision_mAP.svg)
+
+Recall
+![recall](./images/DetectionBoxes_Recall_AR@1.svg)
+
 Loss is gradually decreased. But it is not great.
 
 #### Improve on the reference
-
-### Edit pipeline_new.config
 To improve on the model performance, probability of grayscale conversion, contrast values, and brightness are adjusted.
 Changes are in pipeline_new.config
+
+##### Edit pipeline_new.config
 
 data_augmentation_options {
     random_rgb_to_gray {
@@ -284,6 +290,22 @@ Bright image
 
 Gray scaled
 ![aug4](./images/aug4.png)
+
+
+The model loss with augmentation :
+Loss/classification_loss
+![aug_loss1](./images/Aug_Loss_classification_loss.svg)
+
+Loss/localization_loss
+![aug_loss2](./images/Aug_Loss_localization_loss.svg)
+
+Loss/regularization_loss
+![aug_loss3](./images/Aug_Loss_regularization_loss.svg)
+
+Loss/total_loss
+![aug_loss4](./images/Aug_Loss_total_loss.svg)
+
+The loss is lower than the previous loss
 
 
 
