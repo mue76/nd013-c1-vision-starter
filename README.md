@@ -254,7 +254,7 @@ Loss is gradually decreased. But it is not great.
 ### Edit pipeline_new.config
 To improve on the model performance, probability of grayscale conversion, contrast values, and brightness are adjusted.
 Changes are in pipeline_new.config
-'''
+
 data_augmentation_options {
     random_rgb_to_gray {
     probability: 0.2
@@ -271,12 +271,12 @@ data_augmentation_options {
     max_delta: 0.3
     }
   }
-'''
+
 
 Gray scaled
 ![aug1](./images/aug1.png)
 
-Brigh image
+Bright image
 ![aug2](./images/aug2.png)
 
 Bright image
