@@ -210,16 +210,19 @@ Further analysis of the dataset shows that most images contain vehicles and pede
 
 *Distribution of Cars*
 ![chart2](./images/chart2.png)
+
 The highest point is when the number of vehicles per image is 1~2, and it gradually decreases, so it is rarely more than 60.
 
 
 *Distribution of Pedestrians*
 ![chart3](./images/chart3.png)
+
 The highest point is when the number of pedestrians per image is 1~2, and the number of pedestrians per image is the highest, and it is rarely more than 40.
 
 
 *Distribution of Cyclits*
 ![chart4](./images/chart4.png)
+
 The cyclist is also often included in the image with about 1 person, and it is slightly distributed among 2-6 people.
 
 
@@ -230,15 +233,28 @@ I used a training set - 75%, a validation set - 15%, a test set - 10% of 100 tfr
 
 ### Training
 #### Reference experiment
-This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+The Single Shot Detector (SSD Resnet 50 640x640) without augmentation , model loss is shown below: 
 
+Loss/classification_loss
 ![loss1](./images/Loss_classification_loss.svg)
 
+Loss/localization_loss
 ![loss2](./images/Loss_localization_loss.svg)
 
+Loss/regularization_loss
 ![loss3](./images/Loss_regularization_loss.svg)
 
-![loss4](./Loss_total_loss.svg)
+Loss/total_loss
+![loss4](./images/Loss_total_loss.svg)
 
 #### Improve on the reference
-This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
+![aug1](./images/aug1.png)
+
+![aug2](./images/aug2.png)
+
+![aug3](./images/aug3.png)
+
+![aug4](./images/aug4.png)
+
+
+
