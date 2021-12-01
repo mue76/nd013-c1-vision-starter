@@ -176,9 +176,47 @@ Reinstall cuda and cudnn in Google Colab
 Pleare refer to the (in_Colab)_from_download_dataset_until_object_detection.ipynb
 
 ### Dataset
-#### Dataset analysis
-This section should contain a quantitative and qualitative description of the dataset. It should include images, charts and other visualizations.
+
+Images are taken in different environments(subway/highway/city) with different weather conditions(foggy/sunny) and different times of the day(day/night).The bounding boxes are red for the vehicles, green for the cyclists and blue for the pedestrians.
+
 ![eda1](./images/eda1.png)
+
+![eda2](./images/eda2.png)
+
+![eda3](./images/eda3.png)
+
+![eda4](./images/eda4.png)
+
+![eda5](./images/eda5.png)
+
+![eda6](./images/eda6.png)
+
+![eda7](./images/eda7.png)
+
+![eda8](./images/eda8.png)
+
+![eda9](./images/eda9.png)
+
+![eda10](./images/eda10.png)
+
+#### Dataset analysis
+Further analysis of the dataset shows that most images contain vehicles and pedestrians (majority vehicles), and very few sample images have cyclists in them. The chart below shows a bar plot for the distribution of classes (cars, pedestrians, and cyclists), over a collection of 20000 random images in the dataset. 
+![chart1](./images/chart1.png)
+
+*Distribution of Cars
+![chart2](./images/chart2.png)
+The highest point is when the number of vehicles per image is 1~2, and it gradually decreases, so it is rarely more than 60.
+
+
+*Distribution of Pedestrians
+![chart3](./images/chart3.png)
+The highest point is when the number of pedestrians per image is 1~2, and the number of pedestrians per image is the highest, and it is rarely more than 40.
+
+
+*Distribution of Cyclits
+![chart4](./images/chart4.png)
+The cyclist is also often included in the image with about 1 person, and it is slightly distributed among 2-6 people.
+
 
 #### Cross validation
 To create the different splits: training, validation and testing, I implemeted split_data function in the create_splits.py
