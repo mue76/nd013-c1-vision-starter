@@ -247,13 +247,42 @@ Loss/regularization_loss
 Loss/total_loss
 ![loss4](./images/Loss_total_loss.svg)
 
+Loss is gradually decreased. But it is not great.
+
 #### Improve on the reference
+
+### Edit pipeline_new.config
+To improve on the model performance, probability of grayscale conversion, contrast values, and brightness are adjusted.
+Changes are in pipeline_new.config
+'''
+data_augmentation_options {
+    random_rgb_to_gray {
+    probability: 0.2
+    }
+  }
+  data_augmentation_options {
+    random_adjust_contrast {
+    min_delta: 0.6
+    max_delta: 1.0
+    }
+  }
+  data_augmentation_options {
+    random_adjust_brightness {
+    max_delta: 0.3
+    }
+  }
+'''
+
+Gray scaled
 ![aug1](./images/aug1.png)
 
+Brigh image
 ![aug2](./images/aug2.png)
 
+Bright image
 ![aug3](./images/aug3.png)
 
+Gray scaled
 ![aug4](./images/aug4.png)
 
 
