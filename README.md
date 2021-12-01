@@ -247,13 +247,9 @@ Loss/regularization_loss
 Loss/total_loss
 ![loss4](./images/Loss_total_loss.svg)
 
-Precision
-![precision](./images/DetectionBoxes_Precision_mAP.svg)
-
-Recall
-![recall](./images/DetectionBoxes_Recall_AR@1.svg)
 
 Loss is gradually decreased. But it is not great.
+(Evaluation curve is not displayed in tensorboard)
 
 #### Improve on the reference
 To improve on the model performance, probability of grayscale conversion, contrast values, and brightness are adjusted.
@@ -292,18 +288,17 @@ Gray scaled
 ![aug4](./images/aug4.png)
 
 
-The model loss with augmentation :
+Precision with augmentations
 Loss/classification_loss
-![aug_loss1](./images/Aug_Loss_classification_loss.svg)
+![aug_prec](./images/aug_prec.png)
 
-Loss/localization_loss
-![aug_loss2](./images/Aug_Loss_localization_loss.svg)
+Recall with augmentations
+![aug_rec](./images/aug_rec.png)
 
-Loss/regularization_loss
-![aug_loss3](./images/Aug_Loss_regularization_loss.svg)
+Loss with augmentations
+![aug_loss](./images/aug_loss.png)
 
-Loss/total_loss
-![aug_loss4](./images/Aug_Loss_total_loss.svg)
+
 
 The loss is lower than the previous loss
 
