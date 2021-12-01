@@ -244,11 +244,11 @@ Recall
 Loss
 ![loss](./images/loss.png)
 
-{'Loss/classification_loss': 0.7530304,
+ 'Loss/classification_loss': 0.7530304,
  'Loss/localization_loss': 1.115476,
  'Loss/regularization_loss': 8608118.0,
  'Loss/total_loss': 8608120.0,
- 'learning_rate': 0.0}
+ 'learning_rate': 0.0
  
 Loss is gradually decreased. But it is not great.
 (Evaluation curve is not displayed in tensorboard)
@@ -298,11 +298,12 @@ Recall with augmentations
 
 Loss with augmentations
 ![aug_loss](./images/aug_loss.png)
-{'Loss/classification_loss': 0.21389142,
+
+ 'Loss/classification_loss': 0.21389142,
  'Loss/localization_loss': 0.21148735,
  'Loss/regularization_loss': 0.23820335,
  'Loss/total_loss': 0.6635821,
- 'learning_rate': 0.0}
+ 'learning_rate': 0.0
 
 
 The loss is lower than the previous loss
