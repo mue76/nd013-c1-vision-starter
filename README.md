@@ -250,8 +250,9 @@ Loss
  'Loss/total_loss': 8608120.0,
  'learning_rate': 0.0
  
-Loss is gradually decreased. But it is not great.
-(Evaluation curve is not displayed in tensorboard)
+Training Loss is gradually decreased. 
+But evaluation curve is not displayed in tensorboard.
+It is expected that the curve will appear when training and evaluating are executed at the same time. However, since I was in the colab environment, it seems difficult to open multiple terminals.
 
 #### Improve on the reference
 To improve on the model performance, probability of grayscale conversion, contrast values, and brightness are adjusted.
@@ -306,7 +307,11 @@ Loss with augmentations
  'learning_rate': 0.0
 
 
-The loss is lower than the previous loss
+There was a difference in the loss values before and after data augmentation. Better results were obtained after augmentation.
 
+To improve performance, I first augmented the image by converting it to grayscale with a probability of 0.2.
+Many parts of the image looked a bit dark, so I increased the brightness to 0.3.
+By putting the contrast values in a range, more lighting data points were available for classification.
+In conclusion, it is thought that data augmentation had the effect of obtaining more data, which may have helped with performance and overfitting problems. 
 
 
